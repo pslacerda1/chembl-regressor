@@ -1,37 +1,39 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [project]
-name = "chembl_regressor"
-version = "0.0.1"
-authors = [
-  { name="Pedro Sousa Lacerda", email="pslacerda@gmail.com" },
-]
-description = "A ChEMBL biological activity regression model"
-readme = "README.md"
-license = {file = "LICENSE"}
-requires-python = ">=3.11"
-classifiers = [
-    "Programming Language :: Python :: 3",
-]
-dependencies = [
-  "molfeat",
-  "click",
-  "scikit-learn",
-  "numpy",
-  "joblib",
-  "scipy",
-  "lightgbm",
-  "seaborn",
-  "matplotlib"
-]
-[project.scripts]
-chembl-regressor = "chembl_regressor:cli"
+    name = "chembl-regressor"
+    description = "A ChEMBL biological activity regression model"
+    authors = [
+        {name = "Pedro Sousa Lacerda", email = "pslacerda@gmail.com"}
+    ]
+    license = "Unlicense"
+    readme = "README.md"
+    version = "0.2.0"
+    requires-python = ">=3.14.8"
 
-[tool.setuptools.packages]
-find = {}
+    dependencies = [
+        "molfeat<1",
+        "click>=8.5.0,<9",
+        "scikit-learn>=1.9.1,<2",
+        "numpy>=2.5.4,<3",
+        "joblib>=1.6.0,<2",
+        "scipy>=1.18.1,<2",
+        "lightgbm>=4.7.0,<5",
+        "seaborn>=0.13.2,<0.14",
+        "matplotlib>=3.11.2,<4",
+        "pandas>=3.0.6,<4"
+    ]
+[project.scripts]
+    chembl-regressor = "chembl_regressor:cli"
 
 [project.urls]
-Homepage = "https://github.com/pslacerda/chembl-regressor"
-Issues = "https://github.com/pslacerda/chembl-regressor/issues"
+    Homepage = "https://github.com/pslacerda/chembl-regressor"
+
+[tool.setuptools.packages.find]
+    where = ["src"]
+    include = ["chembl_regressor"]
+
+
+[tool.ty]
+    python-version = "3.14"
+
+[tool.ty.rules]
+    possibly-missing-import = "warn"
